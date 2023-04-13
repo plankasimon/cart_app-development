@@ -33,8 +33,7 @@
                   <button matButton [matMenuTriggerFor]="menu"
                     class="button max-w-xs rounded-full flex items-center text-sm focus:outline-none ring-2 focus:ring-offset-gray-800 ring-white"
                     id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                    <img class="h-8 w-8 object-cover rounded-full bg-gray-200 bg-opacity-20" src="{{authService.src}}"
-                      alt="">
+                    <img class="h-8 w-8 object-cover rounded-full bg-gray-200 bg-opacity-20" src="{{authService.src}}">
                   </button>
                   <mat-menu #menu="matMenu" class="w-44">
                     <ng-container *ngIf="!authService.isAuthenticated" class="mt-5">
