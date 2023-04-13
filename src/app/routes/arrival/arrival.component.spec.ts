@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ArrivalComponent } from './arrival.component';
 
-describe('TryComponent', () => {
+describe('ArrivalComponent', () => {
   let component: ArrivalComponent;
   let fixture: ComponentFixture<ArrivalComponent>;
 

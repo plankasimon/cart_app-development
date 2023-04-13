@@ -6,7 +6,7 @@ import { distinctUntilChanged, Observable, Subject, switchMap, tap } from 'rxjs'
 import { RoutesInt } from 'app/routes-system/routes';
 
 @Component({
-  selector: 'app-try',
+  selector: 'app-arrival',
   templateUrl: './arrival.component.html',
   styleUrls: ['./arrival.component.css']
 })
