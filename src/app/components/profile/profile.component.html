@@ -16,7 +16,7 @@
                     {{authService.email}}
                 </div>
 
-                <div class="text-black mt-5">
+                <div class="rich-black mt-5">
 
                     <form [formGroup]="ProfileForm"  action="" class="user-form grid grid-cols-2 gap-4">
 
@@ -139,7 +139,7 @@
                 <div class="py-10">
 
                     <div *ngFor="let route of routesServ.routesBooked$ | async" class="flex justify-center pb-7">
-                        <mat-card class="card text-white">
+                        <mat-card class="card rich-black">
                             <mat-card-header>
                                 <mat-card-title class="text-lg sm:text-xl">{{route.userName}}</mat-card-title>
                             </mat-card-header>
@@ -165,7 +165,9 @@
                                     <span class="material-icons-outlined text-sm">
                                         person
                                     </span> {{route.seats}}
-                                    <span class="material-icons-outlined text-sm sm:pl-3">
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
                                         payments
                                     </span> {{route.price}}.00 Kč
                                 </p>
@@ -179,7 +181,7 @@
                                         contact_mail
                                     </span> {{route.email}}
                                 </p>
-                                <div class="pt-4 flex justify-center sm:block sm:pt-0 sm:absolute sm:inset-y-0 sm:right-7" style="top:80px">
+                                <div class="pt-4 flex justify-center sm:block sm:pt-0 sm:absolute sm:inset-y-0 sm:right-7" style="top:100px">
                                     <button mat-button (click)="unsubscribeRoute(route.routeID!)"
                                         class="button text-base px-4 py-1 rounded-md text-white">Unsubscribe</button>
                                 </div>

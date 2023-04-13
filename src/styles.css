@@ -42,15 +42,9 @@ input[type=number] {
 
 
 body {
-  /* background: rgb(65, 46, 70);
-  background: linear-gradient(0deg, rgba(65, 46, 70, 1) 0%, rgba(7, 0, 11, 1) 100%); */
-  /* background: rgb(21,0,37);
-  background: linear-gradient(180deg, rgba(21,0,37,1) 0%, rgb(63, 58, 73) 100%); */
   font-family: 'Kanit', sans-serif;
   background-image: url("assets/imgs/bgbgbg.png");
   background-repeat: repeat-y;
-  /* background: rgb(67, 58, 79);
-  background: linear-gradient(125deg, #433a4f 0%, #2a1d36 47%, #060008 100%); */
   background-color: #f2f5ff;
   background-attachment: fixed;
 }

@@ -1,3 +1,14 @@
 .login-bg{
   background-color: #e2e8fedd;
 }
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: #e2e8fe7c;
+}
+
+.login-panel{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -112,6 +112,7 @@ export class AuthService implements OnInit {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.error(errorCode, errorMessage)
         this.toast.error("There was an error!")
         this.isAuthenticated = false;
       }).finally(() => (this.isLoading = false));
@@ -128,7 +129,8 @@ export class AuthService implements OnInit {
         age: age,
         gender: gender,
       })
-      this.toast.success('User created!')
+      this.router.navigate(['/main']);
+      this.toast.success('User created!');
       this.isAuthenticated = true;
       console.log("Document written with ID:", this.uid);
     } catch (e) {
@@ -147,15 +149,11 @@ export class AuthService implements OnInit {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        /* sendEmailVerification(user).then(() => {
-          this.toast.info("Verification email has been sent. Check your inbox!");
-          this.router.navigate(['/verify-mail']);
-        }) */
         this.uid = user.uid;
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        this.toast.error("There was an error!" + errorMessage)
+        this.toast.error("There was an error!");
+        console.error(error.message)
         this.isAuthenticated = false;
       }).finally(() => (this.isLoading = false, this.addUser(firstName, lastName, email, age, gender, this.uid)));
   }
@@ -169,14 +167,15 @@ export class AuthService implements OnInit {
     const auth = getAuth();
     this.isLoadingPass = true;
     return await sendPasswordResetEmail(auth, email).then(() => {
-      this.toast.success("Email has been sent!")
+      this.toast.success("Email has been sent!");
+      this.router.navigate(['/login']);
     }, err => {
       if (err.code == "auth/user-not-found") {
         this.toast.warning("User not found!");
       } else {
         this.toast.warning("Something went wrong" + err.message);
       }
-    }).finally(() => (this.isLoadingPass = false, this.router.navigate(['/login'])))
+    }).finally(() => (this.isLoadingPass = false))
   }
 
   //USER UPDATE
