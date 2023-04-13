@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutesService } from 'app/routes-system/routes.service';
 import { distinctUntilChanged, Observable, Subject, switchMap, tap } from 'rxjs';
-import { RoutesInt } from '/Users/plankis/cart_app-development/src/app/routes-system/routes';
+import { RoutesInt } from 'app/routes-system/routes';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
