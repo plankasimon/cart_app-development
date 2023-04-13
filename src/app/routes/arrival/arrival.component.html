@@ -1,0 +1,16 @@
+<h1 class="pb-24 sm:pb-32 rich-black pl-3 pr-3 text-3xl sm:text-5xl text-center mt-40">Where are you headed?</h1>
+<form class="example-form flex justify-center">
+  <mat-form-field class="example-full-width w-2/3 md:w-2/4" appearance="fill">
+    <mat-label>Arrival</mat-label>
+    <input #searchBox (input)="search(searchBox.value)" type="text" placeholder="City" aria-label="Arrival" matInput
+      [formControl]="cityControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngIf="loading">
+        <mat-spinner diameter="22"></mat-spinner>
+      </mat-option>
+      <mat-option *ngFor="let city of cities$ | async" [value]="city.name" (click)="arrivalSubmit()">
+        {{city.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

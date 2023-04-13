@@ -1,0 +1,10 @@
+<h1 class="rich-black text-center pl-3 pr-3 text-3xl sm:text-5xl pb-16 sm:pb-24 mt-40">How many seats are available?</h1>
+<div class="flex justify-around ">
+    <button class="rich-black text-6xl sm:text-8xl" (click)="minusOne()">-</button>
+    <h1 class="rich-black text-6xl sm:text-8xl">{{seatsNumber}}</h1>
+    <button class="rich-black text-6xl sm:text-8xl  " (click)="addOne()">+</button>
+</div>
+
+<div class="flex justify-center">
+    <button class="button py-2 px-5 shadow-sm text-base font-medium rounded-md text-white mt-10" (click)="seatsSubmit()">Submit</button>
+</div>

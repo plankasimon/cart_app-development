@@ -1,0 +1,50 @@
+<div *ngIf="routesServ.clicked" class="mb-32 w-full sm:w-2/3 m-auto card-search rounded-lg">
+    <div class="py-10">
+        <ng-container *ngIf="!routesServ.routesSearched">
+            <span class="material-icons-outlined icon text-8xl flex justify-center">
+                sentiment_dissatisfied
+            </span>
+            <p class="rich-black text-center text-lg">There were no results found for you</p>
+        </ng-container>
+        <div *ngFor="let route of routesServ.routesSearch$ | async" class="flex justify-center pb-7">
+            <mat-card class="cards rich-black">
+                <mat-card-header>
+                    <mat-card-title class="text-lg sm:text-xl">{{route.userName}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="text-base sm:text-lg">
+                    <p><span class="material-icons-outlined text-sm">
+                            public
+                        </span>
+                        {{route.departure}}
+                        -
+                        {{route.arrival}}
+                    </p>
+                    <p>
+                        <span class="material-icons-outlined text-sm">
+                            schedule
+                        </span> {{route.departureTime}}
+                    </p>
+                    <p>
+                        <span class="material-icons-outlined text-sm">
+                            person
+                        </span> {{route.seats}}
+                    </p>
+                    <p>
+                        <span class="material-icons-outlined text-sm">
+                            payments
+                        </span> {{route.price}}.00 Kč
+                    </p>
+                    <p>
+                        <span class="material-icons-outlined text-sm">
+                            chat
+                        </span> {{route.comment}}
+                    </p>
+                    <div class="button-position pt-0 absolute inset-y-0 right-7">
+                        <button mat-button (click)="routeToService(route.routeID!)"
+                            class="button border-solid text-lg border px-5 py-1 rounded-md text-white">Book</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

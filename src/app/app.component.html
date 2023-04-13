@@ -1,0 +1,142 @@
+<html class="h-full ">
+
+<body class="h-full">
+  <div class="navbar">
+    <div class="min-h-full">
+      <nav class="nav-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-36">
+                  <a routerLink="/main" routerLinkActive="router-link-active" class="text-purple-700"><img
+                      src="assets/imgs/logo.png" alt="Carpool icon by Icons8" class="w-14"></a>
+                </div>
+              </div>
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-4 flex items-center md:ml-6">
+                <div class="mr-10 flex items-baseline">
+                  <ng-container *ngIf="!authService.isAuthenticated">
+                    <a routerLink="/login" routerLinkActive="router-link-active"
+                      class=" rich-black px-3 py-2 text-base font-medium flex items-center hover:text-lg transition-all"><span
+                        class="material-icons-outlined text-2xl pr-2">add_circle</span>Offer ride</a>
+                  </ng-container>
+                  <ng-container *ngIf="authService.isAuthenticated">
+                    <a routerLink="/departure" routerLinkActive="router-link-active"
+                      class=" rich-black px-3 py-2 text-base font-medium flex items-center hover:text-lg transition-all"><span
+                        class="material-icons-outlined text-2xl pr-2">add_circle</span>Offer ride</a>
+                  </ng-container>
+
+                </div>
+                <div>
+                  <button matButton [matMenuTriggerFor]="menu"
+                    class="button max-w-xs rounded-full flex items-center text-sm focus:outline-none ring-2 focus:ring-offset-gray-800 ring-white"
+                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <img class="h-8 w-8 object-cover rounded-full bg-gray-200 bg-opacity-20" src="{{authService.src}}"
+                      alt="">
+                  </button>
+                  <mat-menu #menu="matMenu" class="w-44">
+                    <ng-container *ngIf="!authService.isAuthenticated" class="mt-5">
+                      <button mat-menu-item routerLink="/login" routerLinkActive="router-link-active">
+                        <mat-icon>login</mat-icon>
+                        <span>Login</span>
+                      </button>
+                      <button mat-menu-item routerLink="/register" routerLinkActive="router-link-active">
+                        <mat-icon>person_add</mat-icon>
+                        <span>Register</span>
+                      </button>
+                    </ng-container>
+                    <ng-container *ngIf="authService.isAuthenticated">
+                      <button mat-menu-item routerLink="/profile" routerLinkActive="router-link-active">
+                        <mat-icon>person</mat-icon>
+                        <span>Your profile</span>
+                      </button>
+                      <button mat-menu-item (click)="logout()">
+                        <span>Sign out</span>
+                        <mat-icon>logout</mat-icon>
+                      </button>
+                    </ng-container>
+                  </mat-menu>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Mobile menu button -->
+            <div class="-mr-2 flex md:hidden">
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+                (click)="toggleMenu()">
+                <mat-icon class="rich-black">menu</mat-icon>
+              </button>
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+
+        <div *ngIf="isMenu" class="md:hidden" id="mobile-menu">
+
+          <!-- MOBILE MENU IF NOT LOGGED -->
+
+          <mat-toolbar class="mobile-menu-bg rich-black">
+
+            <ng-container *ngIf="authService.isAuthenticated">
+              <mat-toolbar-row>
+                <div class="flex items-center pr-5">
+                  <div class="flex-shrink-0">
+                    <img class="h-8 w-8 rounded-full" src="{{authService.src}}" alt="">
+                  </div>
+                  <div class="ml-3">
+                    <div class="text-base font-medium leading-none rich-black">{{authService.firstName}}
+                      {{authService.lastName}}</div>
+                  </div>
+                </div>
+              </mat-toolbar-row>
+            </ng-container>
+
+            <ng-container *ngIf="!authService.isAuthenticated">
+              <mat-toolbar-row class="hover:bg-gray-200 hover:bg-opacity-10 cursor-pointer" (click)="goToLogin()">
+                <mat-icon class="mr-4">login</mat-icon>
+                <span>Login</span>
+              </mat-toolbar-row>
+              <mat-toolbar-row class="hover:bg-gray-200 hover:bg-opacity-10 cursor-pointer" (click)="goToRegister()">
+                <mat-icon class="mr-4">person_add</mat-icon>
+                <span>Register</span>
+              </mat-toolbar-row>
+            </ng-container>
+
+            <!-- MOBILE MENU IF LOGGED -->
+
+            <ng-container *ngIf="authService.isAuthenticated">
+              <mat-toolbar-row class="hover:bg-gray-200 hover:bg-opacity-10 cursor-pointer" (click)="goToProfile()">
+                <mat-icon class="mr-4">person</mat-icon>
+                <span>Your profile</span>
+              </mat-toolbar-row>
+              <mat-toolbar-row class="hover:bg-gray-200 hover:bg-opacity-10 cursor-pointer" (click)="goToDeparture()">
+                <mat-icon class="mr-4">add</mat-icon>
+                <span>Offer ride</span>
+              </mat-toolbar-row>
+              <mat-toolbar-row class="hover:bg-gray-200 hover:bg-opacity-10 cursor-pointer" (click)="goToLogin()"
+                (click)="logout()">
+                <mat-icon class="mr-4">logout</mat-icon>
+                <span>Logout</span>
+              </mat-toolbar-row>
+
+
+            </ng-container>
+          </mat-toolbar>
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<router-outlet></router-outlet>

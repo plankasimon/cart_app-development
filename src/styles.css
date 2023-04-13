@@ -1,0 +1,73 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '~material-icons/iconfont/material-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&display=swap');
+
+
+:root{
+  /* CSS HEX */
+--lavender-web: #e2e8fe;
+--ultra-violet: #554976;
+--white: #fefefe;
+--mantis: #80bc48;
+--ghost-white: #f8f9fd;
+/* CSS HEX */
+--murrey: #7d2550;
+--amaranth: #e52552;
+--black: #000005;
+--delft-blue: #343573;
+--space-cadet: #2c295a;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+* {
+  --tw-ring-color: transparent !important;
+  
+}
+
+.rich-black{
+  color: #010203;
+}
+
+
+body {
+  /* background: rgb(65, 46, 70);
+  background: linear-gradient(0deg, rgba(65, 46, 70, 1) 0%, rgba(7, 0, 11, 1) 100%); */
+  /* background: rgb(21,0,37);
+  background: linear-gradient(180deg, rgba(21,0,37,1) 0%, rgb(63, 58, 73) 100%); */
+  font-family: 'Kanit', sans-serif;
+  background-image: url("assets/imgs/bgbgbg.png");
+  background-repeat: repeat-y;
+  /* background: rgb(67, 58, 79);
+  background: linear-gradient(125deg, #433a4f 0%, #2a1d36 47%, #060008 100%); */
+  background-color: #f2f5ff;
+  background-attachment: fixed;
+}
+
+.icon{
+  color: #8c608c;
+}
+
+.button {
+  transition: 0.3s;
+  background-color: #343573;
+}
+
+.button:hover{
+  background-color: #201d41;
+}
+
+.box {
+  width: 100%;
+}

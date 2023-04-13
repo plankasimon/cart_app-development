@@ -1,0 +1,29 @@
+.mdc-card__actions{
+    padding-left: 16px !important;
+}
+
+.card-search{
+    margin-top: 0rem;
+    background-color: #e2e8fedd;
+}
+
+.cards{
+    width: 75%;
+    background-color: #dce3ff !important;
+}
+
+.button-position{
+    top: 85px;
+}
+
+@media only screen and (max-width: 901px){
+    .card-search{
+        margin-top: 3rem;
+    }
+}
+
+@media only screen and (max-width: 640px){
+    .card-search{
+        margin-top: 10rem;
+    }
+}

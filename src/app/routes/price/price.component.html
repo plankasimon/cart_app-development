@@ -1,0 +1,16 @@
+<h1 class="rich-black text-center pl-3 pr-3 text-3xl sm:text-5xl pb-16 sm:pb-24 mt-40">Set price per seat</h1>
+<div class="flex justify-center ">
+<mat-form-field appearance="fill" floatLabel="always" class="w-2/3 md:w-2/4">
+    <mat-label>Price</mat-label>
+    <input matInput autocomplete="off" [formControl]="priceControl" type="number" class="text-end" placeholder="0">
+    <span matTextPrefix>Kč</span>
+    <span matTextSuffix>.00</span>
+    <mat-error *ngIf="priceControl.hasError('required')">Please enter your price!</mat-error>
+    <mat-error *ngIf="priceControl.hasError('max')">Lower the price!</mat-error>
+    <mat-error *ngIf="priceControl.hasError('pattern')">Enter only numbers!</mat-error>
+</mat-form-field>
+</div>
+
+<div class="flex justify-center">
+    <button [disabled]="!priceControl.valid" class="button py-2 px-5 shadow-sm text-base font-medium rounded-md text-white mt-10" (click)="priceSubmit()">Submit</button>
+</div>

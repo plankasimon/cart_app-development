@@ -1,0 +1,116 @@
+.mdc-card__actions {
+    padding-left: 16px !important;
+}
+
+.card {
+    width: 75%;
+    background-color: #f3f3f3 !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.pic {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 0;
+    
+}
+
+.profile-bg{
+    z-index: -10000;
+    position: fixed;
+    width: 100%;
+    height: 75vh;
+    background-image: url("assets/imgs/prof-bg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color: #e2e8fe;
+}
+
+::ng-deep .mat-mdc-tab-label-container{
+    font-size: large;
+}
+
+#profile-box {
+    background-color: #e2e8fedf;
+}
+
+.profile-pic {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10rem;
+    width: 10rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    border: solid 2px #8c608c;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+}
+
+.routes-bg{
+    background: #e2e8fedd;
+}
+
+.booked-bg{
+   background: #e2e8fedd;
+}
+
+.profile-pic span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.profile-pic:hover {
+    cursor: pointer;
+    opacity: 0.85;
+    transition: 0.3s;
+}
+
+.profile-pic:hover span {
+    visibility: visible;
+    opacity: 1;
+}
+
+.box-profile{
+    box-shadow: 1px 1px 5px #554976be;
+}
+
+* {
+    --tw-ring-color: transparent !important;
+}
+
+@media only screen and (max-width: 640px) {
+    .profile-pic {
+        height: 7rem;
+        width: 7rem;
+    }
+
+    .box-profile {
+        width: 65%;
+    }
+
+    .profile-bg{
+        display: none;
+    }
+}
+
+/* ???? */
+
+@media only screen and (max-width: 450px) {
+    .box-profile {
+        width: 100%;
+    }
+}

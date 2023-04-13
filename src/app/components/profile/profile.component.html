@@ -1,0 +1,204 @@
+<div class="profile-bg"></div>
+<div class="bg-road"></div>
+<div class="mt-20 mb-12">
+    <div class="flex justify-center w-full sm:w-auto">
+        <div class="box-profile overflow-hidden rounded-3xl">
+            <div id="profile-box" class="px-4 py-5 sm:p-6">
+                <div class="profile-pic" (click)="fileUpload.click()">
+                    <img class="pic" src="{{authService.src}}">
+                    <span class="material-icons-outlined text-8xl text-white">
+                        edit
+                    </span>
+                    <input type="file" accept=".jpg, .jpeg, .png" class="file-input hidden" #fileUpload
+                        (change)="onFileSelected($event)">
+                </div>
+                <div class="text-lg rich-black sm:text-2xl flex justify-center h-8 sm:h-10">
+                    {{authService.email}}
+                </div>
+
+                <div class="text-black mt-5">
+
+                    <form [formGroup]="ProfileForm"  action="" class="user-form grid grid-cols-2 gap-4">
+
+                        <mat-form-field hideRequiredMarker appearance="fill" class="firstName sm:col-span-1 col-span-2">
+                            <mat-label>First name</mat-label>
+                            <input matInput type="text" formControlName="firstName" placeholder="First name">
+                            <mat-error *ngIf="firstName?.errors?.['required']" class="text-xs">First name is
+                                required!</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field hideRequiredMarker appearance="fill" class="sm:col-span-1 col-span-2">
+                            <mat-label>Last name</mat-label>
+                            <input matInput type="text" formControlName="lastName" placeholder="Last name">
+                            <mat-error *ngIf="age?.errors?.['required']" class="text-xs">Last name is
+                                required!</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field hideRequiredMarker appearance="fill" class="sm:col-span-1 col-span-2">
+                            <mat-label>Age</mat-label>
+                            <input matInput type="number" formControlName="age" placeholder="Age">
+                            <mat-error *ngIf="age?.errors?.['max']" class="text-xs">Too old!</mat-error>
+                            <mat-error *ngIf="age?.errors?.['min']" class="text-xs">Too young!</mat-error>
+                            <mat-error *ngIf="age?.errors?.['required']" class="text-xs">Age is required!</mat-error>
+                            <mat-error *ngIf="age?.errors?.['pattern']" class="text-xs">Age must be a number!</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field hideRequiredMarker appearance="fill" class="sm:col-span-1 col-span-2">
+                            <mat-label>Gender</mat-label>
+                            <input type="text" matInput formControlName="gender" placeholder="Gender">
+                            <mat-error *ngIf="gender?.errors?.['required']" class="text-xs">Gender is
+                                required!</mat-error>
+                        </mat-form-field>
+
+                    </form>
+                    <div class="px-4 text-center sm:px-6">
+                        <button  (click)="updateProfile()"
+                            [disabled]="!ProfileForm.valid || !ProfileForm.dirty"
+                            class="button inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-base font-medium rounded-md text-white ">
+                            Update
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="sm:w-2/3 w-full m-auto">
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Your routes">
+            
+            <div *ngIf="routesServ.userRoutes$.value.length != 0" class="mb-32  m-auto routes-bg rounded-b-2xl">
+                <div class="py-10">
+                    <div *ngFor="let route of routesServ.userRoutes$| async" class="flex justify-center pb-7">
+                        <mat-card class="card rich-black">
+                            <mat-card-header>
+                                <mat-card-title class="text-lg sm:text-xl md:text-2xl">{{route.userName}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="text-base sm:text-lg md:text-xl">
+                                <p><span class="material-icons-outlined text-sm">
+                                        public
+                                    </span>
+                                    {{route.departure}}
+                                    -
+                                    {{route.arrival}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        schedule
+                                    </span> {{route.departureTime}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        calendar_month
+                                    </span> {{route.departureDate}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        person
+                                    </span> {{route.seats}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        payments
+                                    </span> {{route.price}}.00 Kč
+                                </p>
+                                <div class="pt-0 absolute inset-y-0 right-7 top-1/3">
+                                    <div>
+                                        <button mat-button (click)="openDialog(route.routeID!)"
+                                            class="button text-base px-4 py-1 w-20 rounded-md text-white ">Info</button>
+                                    </div>
+                                    <div class="pt-2">
+                                        <button mat-button (click)="askDeleteRoute(route.routeID!)"
+                                            class="button text-base px-4 py-1 w-20 rounded-md text-white ">Delete</button>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="routesServ.userRoutes$.value.length == 0" class="mb-32 m-auto routes-bg rounded-b-2xl">
+                <div class="py-10">
+                    <ng-container>
+                        <span class="material-icons-outlined icon text-8xl flex justify-center">
+                            sentiment_dissatisfied
+                        </span>
+                        <p class="rich-black text-center text-lg">You have no routes!</p>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Ordered routes">
+            <div *ngIf="routesServ.routesBooked$.value.length != 0" class="mb-32 m-auto booked-bg rounded-b-2xl">
+                <div class="py-10">
+
+                    <div *ngFor="let route of routesServ.routesBooked$ | async" class="flex justify-center pb-7">
+                        <mat-card class="card text-white">
+                            <mat-card-header>
+                                <mat-card-title class="text-lg sm:text-xl">{{route.userName}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="text-base sm:text-lg">
+                                <p><span class="material-icons-outlined text-sm">
+                                        public
+                                    </span>
+                                    {{route.departure}}
+                                    -
+                                    {{route.arrival}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        calendar_month
+                                    </span> {{route.departureDate}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        schedule
+                                    </span> {{route.departureTime}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        person
+                                    </span> {{route.seats}}
+                                    <span class="material-icons-outlined text-sm sm:pl-3">
+                                        payments
+                                    </span> {{route.price}}.00 Kč
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        chat
+                                    </span> {{route.comment}}
+                                </p>
+                                <p>
+                                    <span class="material-icons-outlined text-sm">
+                                        contact_mail
+                                    </span> {{route.email}}
+                                </p>
+                                <div class="pt-4 flex justify-center sm:block sm:pt-0 sm:absolute sm:inset-y-0 sm:right-7" style="top:80px">
+                                    <button mat-button (click)="unsubscribeRoute(route.routeID!)"
+                                        class="button text-base px-4 py-1 rounded-md text-white">Unsubscribe</button>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="routesServ.routesBooked$.value.length == 0" class="mb-32 m-auto booked-bg rounded-b-2xl">
+                <div class="py-10">
+                    <ng-container>
+                        <span class="material-icons-outlined icon text-8xl flex justify-center">
+                            sentiment_dissatisfied
+                        </span>
+                        <p class="rich-black text-center text-lg">You have no booked routes!</p>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

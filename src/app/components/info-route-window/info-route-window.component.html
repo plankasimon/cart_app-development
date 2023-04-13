@@ -1,0 +1,55 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <span class="material-icons-outlined close-icon">
+        close
+        </span>
+  </button>
+<h1 mat-dialog-title class="title">{{data.userName}}</h1>
+<div mat-dialog-content class="dialog-content">
+    <table>
+        <tr>
+            <td>Departure:</td>
+            <th>{{data.departure}}</th>
+        </tr>
+        <tr>
+            <td>Arrival:</td>
+            <th>{{data.arrival}}</th>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <th>{{data.departureDate}}</th>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <th>{{data.departureTime}}</th>
+        </tr>
+        <tr>
+            <td>Comment:</td>
+            <th>{{data.comment}}</th>
+        </tr>
+    </table>
+
+    <br>
+    Booked users:
+    <div *ngFor="let user of userDetails">
+        <br>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <th>{{user.firstName}} {{user.lastName}}</th>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <th>{{user.age}}</th>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <th>{{user.gender}}</th>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <th>{{user.email}}</th>
+            </tr>
+        </table>
+        
+    </div>
+</div>

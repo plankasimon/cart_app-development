@@ -1,0 +1,10 @@
+<h1 class="text-3xl sm:text-5xl rich-black pl-3 pr-3 pb-16 sm:pb-24 text-center  mt-40">Anything to add to your ride?</h1>
+<div class="flex justify-center">
+    <mat-form-field class="w-2/3 md:w-2/4">
+        <mat-label>Leave a comment</mat-label>
+        <textarea [formControl]="commentControl" class="comment" matInput placeholder="Hi, I'll be stoping in..., wait for me by the church..."></textarea>
+    </mat-form-field>
+</div>
+<div class="flex justify-center">
+    <button class="button py-2 px-5 border border-transparent shadow-sm text-base font-medium rounded-md text-white mt-10" (click)="commentSubmit()">Submit</button>
+</div>

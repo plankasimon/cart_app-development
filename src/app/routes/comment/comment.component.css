@@ -1,0 +1,8 @@
+.comment{
+    min-height: 4rem;
+    max-height: 14rem;
+}
+
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color: #e2e8fe7c;
+  }

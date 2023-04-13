@@ -1,0 +1,15 @@
+
+<div class="h-36 rounded-md">
+    <span matSnackBarLabel>
+        <p class="text-center pt-3 text-black">Do you really want to delete this route?</p>
+    </span>
+    <span matSnackBarAction class="flex justify-center pt-1 mb-1">
+        <button mat-button (click)="deleteRoute()" (click)="dismissSnack()"
+            class="button text-white border-solid text-base border px-4 py-1 w-20 rounded-md">Yes</button>
+    </span>
+    <span matSnackBarAction class="absolute right-3 top-1">
+        <span class="material-icons-outlined cursor-pointer" (click)="dismissSnack()">
+            close
+            </span>
+    </span>
+</div>
