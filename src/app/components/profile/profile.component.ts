@@ -77,9 +77,7 @@ export class ProfileComponent implements OnInit {
 
   async unsubscribeRoute(routeID: string) {
     await this.routesServ.getUnsubscribedOrderedRoute(routeID);
-    this.toast.success("Route usnubscribed successfully!", {
-      position: 'top-right'
-    })
+    this.toast.success("Route usnubscribed successfully!")
   }
 
 
